@@ -4,7 +4,7 @@
   "description": "Console utility that counts your capital when you work. It works with Ukraine Exchange only.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
