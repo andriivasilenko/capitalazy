@@ -3,7 +3,7 @@ export default class Portfolio {
     this.instruments = instruments;
   }
 
-  setInstrument(code) {
-    return this.instruments + code;
+  setInstrument() {
+    return this.instruments;
   }
 }
