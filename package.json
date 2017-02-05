@@ -1,8 +1,8 @@
 {
-  "name": "capitalizz",
+  "name": "capitalazy",
   "version": "1.0.0",
   "description": "Console utility that counts your capital when you work. It works with Ukraine Exchange only.",
-  "main": "index.js",
+  "main": "dist/main.js",
   "bin": {
     "capitalazy": "./bin/capitalazy.js"
   },

@@ -2,29 +2,20 @@ import jsdom from 'jsdom';
 import fs from 'fs';
 import Portfolio from './Portfolio';
 
+console.log(process.argv);
 const url = 'http://www.ux.ua/ru/issue.aspx?code=';
-const utilityName = process.argv[2];
+const generalCommand = process.argv[2];
 const [command, ...parameters] = process.argv.slice(2);
-const portfolioSettings = JSON.parse(fs.readFileSync('../data/portfolio.json', 'UTF-8').toString());
-const isSingleParameter = parameters.length === 1;
-const portfolio = new Portfolio(portfolioSettings);
+
+// Initial portfolio
+const pfPath = './data/portfolio.json';
+const pfInstruments = JSON.parse(fs.readFileSync(pfPath).toString());
+const pfSuppertedCodes = new Set(['MSICH', 'CEEN', 'DOEN', 'BAVL', 'UNAF', 'KUBI', 'GOLDI', 'IFGRUS', 'IFSHEV']);
+const portfolio = new Portfolio(pfInstruments, pfPath, pfSuppertedCodes);
 
 switch (command) {
   case 'put':
-
-    switch (isSingleParameter) {
-      case true:
-        portfolio.setInstrument(parameters);
-        break;
-      case false:
-        portfolio.setInstruments(parameters);
-        break;
-      default:
-        if (parameters.length === 0) {
-          console.log('Вам следует ввести хотя бы один код эмитента из списка доступных.');
-        }
-    }
-
+    portfolio.setInstruments(parameters);
     break;
   default:
     console.log('Незнакомая команда! Попробуйте проверить правильность набора и проверить еще раз!');
