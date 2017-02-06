@@ -1,28 +1,7 @@
 import fs from 'fs';
 import Portfolio from '../lib/Portfolio';
 
-const data = {
-  'MSICH': {
-    'name': 'Мотор Сич, аз',
-    'price': 23.02,
-    'lastPrice': 23.08,
-    'amount': 1,
-  },
-
-  'BAVL': {
-    'name': 'Банк Аваль, аз',
-    'price': 23.02,
-    'lastPrice': 23.08,
-    'amount': 1,
-  },
-
-  'CEEN': {
-    'name': 'Центренерго, аз',
-    'price': 23.02,
-    'lastPrice': 23.08,
-    'amount': 1,
-  },
-}
+const data = JSON.parse(fs.readFileSync('./__test__/test-portfolio.json'));
 
 describe('test Constructor', () => {
   test('instruments is empty', () => {
@@ -69,7 +48,7 @@ describe('test setInstrument', () => {
 });
 
 describe('test setInstruments', () => {
-  const pf = new Portfolio({}, '', new Set(['MSICH', 'CEEN', 'BAVL', 'DOEN', 'IFGRUS']));
+  const pf = new Portfolio({}, './__test__/test-portfolio-2.json', new Set(['MSICH', 'CEEN', 'BAVL', 'DOEN', 'IFGRUS']));
   test('add stocks', () => {
     pf.setInstruments(['MSiCH', 'CEEN']);
     expect(pf.hasInstrument('MSICH')).toBeTruthy();
@@ -88,11 +67,11 @@ describe('test setInstruments', () => {
 });
 
 describe('test updatePortfolio', () => {
-  const pf = new Portfolio({ CEEN: 'something' }, './test-portfolio.json');
-  pf.updatePortfolio();
-  const expectedData = fs.readFileSync('test-portfolio.json').toString();
+  const pf = new Portfolio({ CEEN: 'something' }, './__test__/test-portfolio-2.json');
+  pf.updateInstruments();
+  const expectedData = fs.readFileSync('./__test__/test-portfolio-2.json').toString();
   test('portfolio is updated', () => {
-    expect(JSON.stringify(pf.instruments)).toBe(expectedData);
+    expect(JSON.stringify(pf.instruments)).toEqual(expectedData);
   });
 });
 
