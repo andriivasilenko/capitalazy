@@ -1,36 +1,51 @@
 {
-  "name": "capitalazy",
-  "version": "1.0.1",
-  "description": "Console utility that counts your capital when you work. It works with Ukraine Exchange only.",
-  "main": "dist/main.js",
-  "bin": "./bin/capitalazy.js",
+  "name": "nodejs-package",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "bin": {
+    "hexlet": "dist/bin/hexlet.js"
+  },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "babel-node": "babel-node",
+    "flow": "flow",
+    "flow-typed": "flow-typed",
+    "gulp": "gulp",
+    "eslint": "eslint",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andriivasilenko/capitalizz.git"
+    "url": "git+https://github.com/andriivasilenko/capitalazy.git"
   },
-  "author": "Andrii Vasilenko",
+  "author": "Kirill Mokevnin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/andriivasilenko/capitalizz/issues"
+    "url": "https://github.com/andriivasilenko/capitalazy/issues"
   },
-  "homepage": "https://github.com/andriivasilenko/capitalizz#readme",
-  "devDependencies": {
-    "babel-cli": "^6.22.2",
-    "babel-core": "^6.23.1",
-    "babel-loader": "^6.3.2",
-    "babel-plugin-transform-async-to-generator": "^6.22.0",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-es2015": "^6.22.0",
-    "babel-preset-stage-0": "^6.22.0",
-    "eslint": "^3.14.1",
-    "eslint-config-airbnb-base": "^11.0.1",
-    "eslint-plugin-import": "^2.2.0",
-    "jest": "^18.1.0"
-  },
+  "homepage": "https://github.com/andriivasilenko/capitalazy#readme",
   "dependencies": {
-    "jsdom": "^9.9.1"
+    "gulp": "*",
+    "jsdom": "*"
+  },
+  "devDependencies": {
+    "debug": "*",
+    "babel-cli": "*",
+    "babel-core": "*",
+    "babel-eslint": "*",
+    "babel-plugin-syntax-flow": "*",
+    "babel-plugin-transform-flow-strip-types": "*",
+    "babel-plugin-transform-runtime": "*",
+    "babel-preset-env": "*",
+    "babel-preset-stage-0": "*",
+    "eslint": "*",
+    "eslint-config-airbnb-base": "*",
+    "eslint-plugin-flowtype": "*",
+    "eslint-plugin-import": "*",
+    "flow-bin": "^0.37",
+    "flow-typed": "*",
+    "jest": "*"
   }
 }
